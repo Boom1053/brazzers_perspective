@@ -88,7 +88,7 @@ end
 --                                  Keybinds                                  --
 -- -------------------------------------------------------------------------- --
 
-lib.addKeybind:addKeybind({
+lib.addKeybind({
     name = '_freeCamEnable',
     description = locale('freemCamEnable'),
     defaultKey = config.keys.enableFreeCam,
@@ -100,7 +100,7 @@ lib.addKeybind:addKeybind({
     end,
 })
 
-lib.addKeybind:addKeybind({
+lib.addKeybind({
     name = '_freeCamForward',
     description = locale('freeCamForward'),
     defaultKey = config.keys.freeCamForward,
@@ -108,7 +108,7 @@ lib.addKeybind:addKeybind({
     onReleased = function() handleMovement('forward', false) end
 })
 
-lib.addKeybind:addKeybind({
+lib.addKeybind({
     name = '_freeCamBackward',
     description = locale('freeCamBackward'),
     defaultKey = config.keys.freeCamBackward,
@@ -116,7 +116,7 @@ lib.addKeybind:addKeybind({
     onReleased = function() handleMovement('backward', false) end
 })
 
-lib.addKeybind:addKeybind({
+lib.addKeybind({
     name = '_freeCamLeft',
     description = locale('freeCamLeft'),
     defaultKey = config.keys.freeCamLeft,
@@ -124,7 +124,7 @@ lib.addKeybind:addKeybind({
     onReleased = function() handleMovement('left', false) end
 })
 
-lib.addKeybind:addKeybind({
+lib.addKeybind({
     name = '_freeCamRight',
     description = locale('freeCamRight'),
     defaultKey = config.keys.freeCamRight,
@@ -132,7 +132,7 @@ lib.addKeybind:addKeybind({
     onReleased = function() handleMovement('right', false) end
 })
 
-lib.addKeybind:addKeybind({
+lib.addKeybind({
     name = '_freeCamUp',
     description = locale('freeCamUp'),
     defaultKey = config.keys.freeCamUp,
@@ -140,7 +140,7 @@ lib.addKeybind:addKeybind({
     onReleased = function() handleMovement('up', false) end
 })
 
-lib.addKeybind:addKeybind({
+lib.addKeybind({
     name = '_freeCamDown',
     description = locale('freeCamDown'),
     defaultKey = config.keys.freeCamDown,

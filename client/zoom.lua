@@ -84,7 +84,7 @@ end
 --                                  Keybinds                                  --
 -- -------------------------------------------------------------------------- --
 
-lib.addKeybind:addKeybind({
+lib.addKeybind({
     name = '_zoom',
     description = locale('zoom'),
     defaultKey = config.keys.zoom,
