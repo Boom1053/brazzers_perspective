@@ -88,6 +88,7 @@ lib.addKeybind({
     name = '_zoom',
     description = locale('zoom'),
     defaultKey = config.keys.zoom,
+    defaultMapper = 'MOUSE_BUTTON',
     onPressed = function(self)
         if playerState.freeCam then return end
         if zoom.block then return end
