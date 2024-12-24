@@ -12,6 +12,7 @@ return {
         freeCamRight = 'D',
         freeCamUp = 'Q',
         freeCamDown = 'E',
+        freeCamLock = 'F4',
         zoom = 'MOUSE_MIDDLE',
     },
 }

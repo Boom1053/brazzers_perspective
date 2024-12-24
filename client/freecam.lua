@@ -44,22 +44,24 @@ end
 local function freeCamThread()
     CreateThread(function()
         while freecam.cam do
-            disableControls()
-            utils.checkRotationInput(freecam.cam)
-            if freecam.movement.x or freecam.movement.y or freecam.movement.z then
-                local camCoords = GetCamCoord(freecam.cam)
-                local camRot = GetCamRot(freecam.cam, 2)
+            if not freecam.lock then
+                disableControls()
+                utils.checkRotationInput(freecam.cam)
+                if freecam.movement.x or freecam.movement.y or freecam.movement.z then
+                    local camCoords = GetCamCoord(freecam.cam)
+                    local camRot = GetCamRot(freecam.cam, 2)
 
-                local forwardVector = utils.calculateForwardVector(camRot)
-                local rightVector = utils.calculateRightVector(forwardVector)
+                    local forwardVector = utils.calculateForwardVector(camRot)
+                    local rightVector = utils.calculateRightVector(forwardVector)
 
-                local newCoords = camCoords +
-                forwardVector * freecam.movement.y * config.speed +
-                rightVector * freecam.movement.x * config.speed +
-                vector3(0, 0, freecam.movement.z * config.speed)
+                    local newCoords = camCoords +
+                    forwardVector * freecam.movement.y * config.speed +
+                    rightVector * freecam.movement.x * config.speed +
+                    vector3(0, 0, freecam.movement.z * config.speed)
 
-                newCoords = utils.constrainToMaxDistance(config.distance, newCoords)
-                SetCamCoord(freecam.cam, newCoords.x, newCoords.y, newCoords.z)
+                    newCoords = utils.constrainToMaxDistance(config.distance, newCoords)
+                    SetCamCoord(freecam.cam, newCoords.x, newCoords.y, newCoords.z)
+                end
             end
             Wait(0)
         end
@@ -81,6 +83,7 @@ local function disableFreeCam()
     RenderScriptCams(false, true, config.ease, true, true)
     DestroyCam(freecam.cam, true)
     freecam.cam = nil
+    freecam.lock = false
     playerState:set("freeCam", false, true)
 end
 
@@ -97,6 +100,16 @@ lib.addKeybind({
         if freecam.block then return end
         if freecam.cam then return disableFreeCam() end
         createFreeCam()
+    end,
+})
+
+lib.addKeybind({
+    name = '_freeCamLock',
+    description = locale('freeCamLock'),
+    defaultKey = config.keys.freeCamLock,
+    onPressed = function()
+        if not freecam.cam then return end
+        freecam.lock = not freecam.lock
     end,
 })
 

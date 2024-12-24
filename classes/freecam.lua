@@ -10,6 +10,7 @@ function freecam:constructor()
     self.fov = 75.0
     self.movement = vector3(0, 0, 0)
     self.block = false
+    self.lock = false
 end
 
 return freecam:new()
