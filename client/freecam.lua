@@ -41,6 +41,16 @@ local function handleMovement(key, value)
     if movementMap[key] then movementMap[key]() end
 end
 
+local function disableFreeCam()
+    if not freecam.cam then return end
+    SetCamActive(freecam.cam, false)
+    RenderScriptCams(false, true, config.ease, true, true)
+    DestroyCam(freecam.cam, true)
+    freecam.cam = nil
+    freecam.lock = false
+    playerState:set("freeCam", false, true)
+end
+
 local function freeCamThread()
     CreateThread(function()
         while freecam.cam do
@@ -63,6 +73,14 @@ local function freeCamThread()
                     SetCamCoord(freecam.cam, newCoords.x, newCoords.y, newCoords.z)
                 end
             end
+            if freecam.lock then
+                local myCoords, camCoords = GetEntityCoords(cache.ped), GetCamCoord(freecam.cam)
+                local distance = #(myCoords - camCoords)
+                if distance > config.distance then
+                    return disableFreeCam()
+                end
+            end
+
             Wait(0)
         end
     end)
@@ -75,16 +93,6 @@ local function createFreeCam()
     RenderScriptCams(true, true, config.ease, true, true)
     freeCamThread()
     playerState:set("freeCam", true, true)
-end
-
-local function disableFreeCam()
-    if not freecam.cam then return end
-    SetCamActive(freecam.cam, false)
-    RenderScriptCams(false, true, config.ease, true, true)
-    DestroyCam(freecam.cam, true)
-    freecam.cam = nil
-    freecam.lock = false
-    playerState:set("freeCam", false, true)
 end
 
 -- -------------------------------------------------------------------------- --
