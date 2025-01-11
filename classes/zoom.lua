@@ -1,4 +1,10 @@
 
+---@class zoom : OxClass
+---@field zoomed boolean
+---@field active boolean
+---@field cam number
+---@field fov number
+---@field block boolean
 local zoom = lib.class('brazzers_zoom')
 
 -- -------------------------------------------------------------------------- --

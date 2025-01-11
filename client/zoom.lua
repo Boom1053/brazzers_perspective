@@ -1,5 +1,8 @@
 local utils = lib.load('utils.client.main')
 local config = lib.load('config')
+
+---@type brazzers_zoom
+---@diagnostic disable-next-line: missing-fields
 local zoom = lib.load('classes.zoom')
 local playerState = LocalPlayer.state
 
@@ -9,6 +12,7 @@ if not config.enableZoom then return end
 --                                  Functions                                 --
 -- -------------------------------------------------------------------------- --
 
+---@param bool boolean
 local function blockZoom(bool)
     zoom.block = bool
 end

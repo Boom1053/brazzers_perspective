@@ -1,5 +1,8 @@
 local utils = lib.load('utils.client.main')
 local config = lib.load('config')
+
+---@type brazzers_freecam
+---@diagnostic disable-next-line: missing-fields
 local freecam = lib.load('classes.freecam')
 local playerState = LocalPlayer.state
 
@@ -11,6 +14,7 @@ if not config.enableFreeCam then return end
 --                                  Functions                                 --
 -- -------------------------------------------------------------------------- --
 
+---@param bool boolean
 local function blockFreeCam(bool)
     freecam.block = bool
 end
@@ -26,6 +30,8 @@ local function disableControls()
     DisableControlAction(0, 35, true)
 end
 
+---@param key string type
+---@param value boolean
 local function handleMovement(key, value)
     if not freecam.cam then return end
 

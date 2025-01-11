@@ -1,4 +1,9 @@
-
+---@class freecam : OxClass
+---@field cam number
+---@field fov number
+---@field movement table coords
+---@field block boolean
+---@field lock boolean
 local freecam = lib.class('brazzers_freecam')
 
 -- -------------------------------------------------------------------------- --
