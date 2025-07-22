@@ -54,9 +54,9 @@ local function zoomThread()
                 utils.Lerp(previousCoords.z, mode == 4 and coords.z + 0.5 or coords.z, 0.2)
             )
             local smoothRot = vector3(
-                utils.Lerp(previousRotation.x, rotation.x, 0.2),
-                utils.Lerp(previousRotation.y, rotation.y, 0.2),
-                utils.Lerp(previousRotation.z, rotation.z, 0.2)
+                utils.LerpAngle(previousRotation.x, rotation.x, 0.2),
+                utils.LerpAngle(previousRotation.y, rotation.y, 0.2),
+                utils.LerpAngle(previousRotation.z, rotation.z, 0.2)
             )
 
             SetCamCoord(zoom.cam, smoothCoords.x, smoothCoords.y, smoothCoords.z)
