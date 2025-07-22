@@ -1,18 +1,21 @@
 fx_version 'cerulean'
 game 'gta5'
-
 lua54 'yes'
+use_fxv2_oal 'yes'
 
-name "Brazzers Perspective"
-author "Brazzers Development | MannyOnBrazzers#6826"
-version "1.0.0"
+author "MannyOnBrazzers"
+description 'Perspective of your butthole'
+version "1.0.1"
 
 client_scripts {
     'client/*.lua',
 }
 
+server_script 'version.lua'
+
 shared_scripts {
     '@ox_lib/init.lua',
+    '@ox_core/lib/init.lua',
     'config.lua',
 }
 
@@ -20,6 +23,6 @@ ox_lib 'locale'
 
 files {
     'classes/*.lua',
-    'utils/client/main.lua',
+    'modules/**/*.lua',
     'locales/*.json',
 }
