@@ -1,4 +1,4 @@
----@class freecam : OxClass
+---@class brazzers_freecam : OxClass
 ---@field cam number
 ---@field fov number
 ---@field movement table coords

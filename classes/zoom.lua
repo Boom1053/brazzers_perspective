@@ -1,5 +1,5 @@
 
----@class zoom : OxClass
+---@class brazzers_zoom : OxClass
 ---@field zoomed boolean
 ---@field active boolean
 ---@field cam number
