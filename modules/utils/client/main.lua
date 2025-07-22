@@ -4,6 +4,11 @@ function utils.Lerp(a, b, t)
     return a + (b - a) * t
 end
 
+function utils.LerpAngle(a, b, t)
+    local diff = ((b - a + 180) % 360) - 180
+    return a + diff * t
+end
+
 function utils.calculateForwardVector(rotation)
     local radZ = math.rad(rotation.z)
     local radX = math.rad(rotation.x)
