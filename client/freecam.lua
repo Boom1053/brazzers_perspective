@@ -1,4 +1,4 @@
-local utils = lib.load('utils.client.main')
+local utils = require 'modules.utils.client.main'
 local config = lib.load('config')
 
 ---@type brazzers_freecam
@@ -95,7 +95,7 @@ end
 local function createFreeCam()
     local rotation, mode = GetGameplayCamRot(2), GetFollowPedCamViewMode()
     local coords = mode == 4 and GetEntityCoords(cache.ped) - (GetEntityForwardVector(cache.ped) * 1.0) or GetGameplayCamCoord()
-    freecam.cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", coords.x, coords.y, mode == 4 and coords.z + 0.5 or coords.z, rotation.xyz, freecam.fov, true, 2)
+    freecam.cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", coords.x, coords.y, mode == 4 and coords.z + 0.5 or coords.z, rotation.x, rotation.y, rotation.z, freecam.fov, true, 2)
     RenderScriptCams(true, true, config.ease, true, true)
     freeCamThread()
     playerState:set("freeCam", true, true)

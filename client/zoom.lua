@@ -1,4 +1,4 @@
-local utils = lib.load('utils.client.main')
+local utils = require 'modules.utils.client.main'
 local config = lib.load('config')
 
 ---@type brazzers_zoom
@@ -23,7 +23,7 @@ local function createCamera()
     local rotation, mode = GetGameplayCamRot(2), GetFollowPedCamViewMode()
     -- We check for first person to setup the zoom properly for first person without making it look like shit
     local coords = mode == 4 and GetEntityCoords(cache.ped) + (GetEntityForwardVector(cache.ped) * 1.0) or GetGameplayCamCoord()
-    zoom.cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", coords.x, coords.y, mode == 4 and coords.z + 0.5 or coords.z, rotation.xyz, zoom.fov, true, 2)
+    zoom.cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", coords.x, coords.y, mode == 4 and coords.z + 0.5 or coords.z, rotation.x, rotation.y, rotation.z, zoom.fov, true, 2)
     RenderScriptCams(true, true, config.ease, true, true)
     playerState:set("zoom", true, true)
 end
